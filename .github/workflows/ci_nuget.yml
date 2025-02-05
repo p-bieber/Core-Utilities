@@ -60,7 +60,7 @@ jobs:
 
       - name: Generate NuGet package
         run: |
-          dotnet pack Bieber.Core.Utilities \
+          dotnet pack \
           --configuration Release \
           -p:PackageVersion=${{ needs.generate-version.outputs.new_version }} \
           -p:RepositoryUrl=https://github.com/p-bieber/Core-Utilities \
