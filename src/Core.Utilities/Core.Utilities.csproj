@@ -9,6 +9,7 @@
 		<RootNamespace>$(AssemblyName)</RootNamespace>
 		<Version>1.0.0</Version>
 		<PackageId>$(AssemblyName)</PackageId>
+		<Description>Utility classes and methods for error handling and result processing.</Description>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<packagereadmefile>README.md</packagereadmefile>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
