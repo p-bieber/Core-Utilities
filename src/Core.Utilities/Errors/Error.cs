@@ -87,97 +87,108 @@ public record Error : IEquatable<Error>
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Failure(string code, string? description = default) =>
-        new(ErrorType.Failure, code, description);
+    public static Error Failure(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Failure, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type Validation.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Validation(string code, string? description = default) =>
-        new(ErrorType.Validation, code, description);
+    public static Error Validation(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Validation, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type Problem.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Problem(string code, string? description = default) =>
-        new(ErrorType.Problem, code, description);
+    public static Error Problem(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Problem, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type BadRequest.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error BadRequest(string code, string? description = default) =>
-        new(ErrorType.BadRequest, code, description);
+    public static Error BadRequest(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.BadRequest, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type NotFound.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error NotFound(string code, string? description = default) =>
-        new(ErrorType.NotFound, code, description);
+    public static Error NotFound(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.NotFound, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type Forbidden.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Forbidden(string code, string? description = default) =>
-        new(ErrorType.Forbidden, code, description);
+    public static Error Forbidden(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Forbidden, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type Conflict.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Conflict(string code, string? description = default) =>
-        new(ErrorType.Conflict, code, description);
+    public static Error Conflict(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Conflict, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type Authentication.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Authentication(string code, string? description = default) =>
-        new(ErrorType.Authentication, code, description);
+    public static Error Authentication(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Authentication, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type Authorization.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Authorization(string code, string? description = default) =>
-        new(ErrorType.Authorization, code, description);
+    public static Error Authorization(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Authorization, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type Timeout.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error Timeout(string code, string? description = default) =>
-        new(ErrorType.Timeout, code, description);
+    public static Error Timeout(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.Timeout, code, description, formatArgs);
 
     /// <summary>
     /// Creates an error of type ServiceUnavailable.
     /// </summary>
     /// <param name="code">The code of the error.</param>
     /// <param name="description">The description of the error.</param>
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
     /// <returns>A new instance of the <see cref="Error"/> class.</returns>
-    public static Error ServiceUnavailable(string code, string? description = default) =>
-        new(ErrorType.ServiceUnavailable, code, description);
+    public static Error ServiceUnavailable(string code, string? description = default, string[]? formatArgs = default) =>
+        new(ErrorType.ServiceUnavailable, code, description, formatArgs);
 }
