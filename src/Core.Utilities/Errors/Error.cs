@@ -30,10 +30,12 @@ public record Error : IEquatable<Error>
     /// <param name="errorType">The type of the error.</param>
     /// <param name="code">The code of the error.</param>
     /// <param name="message">The custom message of the error.</param>
-    public Error(ErrorType errorType, string code, string? message = null)
+    /// <param name="formatArgs">Optional. An array of arguments that are used to format the error message. If no arguments are provided, the message will be returned as-is.</param>
+    public Error(ErrorType errorType, string code, string? message = null, string[]? formatArgs = null)
         : this(errorType, code)
     {
         _customMessage = message;
+        _formatArgs = formatArgs ?? [];
     }
 
     /// <summary>
@@ -45,9 +47,23 @@ public record Error : IEquatable<Error>
     /// Gets the custom message of the error.
     /// If a custom message is not set, the message is dynamically retrieved from the resource manager based on the code and current culture.
     /// </summary>
-    public string Message => _customMessage ?? ErrorResourceManager.GetString(Code);
+    public string Message => GetMessage();
+
+    private string GetMessage()
+    {
+        string message = _customMessage ?? ErrorResourceManager.GetString(Code) ?? string.Empty;
+        try
+        {
+            return string.Format(message, _formatArgs ?? []);
+        }
+        catch (Exception)
+        {
+            return message;
+        }
+    }
 
     private readonly string? _customMessage;
+    private readonly string[]? _formatArgs;
 
     /// <summary>
     /// Gets the type of the error.

@@ -97,4 +97,55 @@ public class ErrorTests : IDisposable
         Assert.Equal("Validation description", validation.Message);
         Assert.Equal(ErrorType.Validation, validation.Type);
     }
+
+    [Fact]
+    public void Error_Message_ShouldReturnCustomMessage_WhenCustomMessageIsProvided()
+    {
+        // Arrange
+        var errorType = ErrorType.Validation;
+        var code = "CustomCode";
+        var customMessage = "Custom error message";
+        var error = new Error(errorType, code, customMessage);
+
+        // Act
+        var message = error.Message;
+
+        // Assert
+        Assert.Equal(customMessage, message);
+    }
+
+    [Fact]
+    public void Error_Message_ShouldReturnFormattedMessage_WhenFormatArgsAreProvided()
+    {
+        // Arrange
+        var errorType = ErrorType.Validation;
+        var code = "FormattedCode";
+        var errorMessage = "Message with {0} and {1}";
+        var formatArgs = new string[] { "arg1", "arg2" };
+        var error = new Error(errorType, code, errorMessage, formatArgs);
+
+        // Act
+        var message = error.Message;
+
+        // Assert
+        var expectedMessage = "Message with arg1 and arg2";
+        Assert.Equal(expectedMessage, message);
+    }
+
+    [Fact]
+    public void Error_Message_ShouldReturnUnformattedMessage_WhenFormatExceptionThrows()
+    {
+        // Arrange
+        var errorType = ErrorType.Validation;
+        var code = "FormattedCode";
+        var errorMessage = "Message with {} and {1}";
+        var formatArgs = new string[] { "arg1", "arg2" };
+        var error = new Error(errorType, code, errorMessage, formatArgs);
+
+        // Act
+        var message = error.Message;
+
+        // Assert
+        Assert.Equal(errorMessage, message);
+    }
 }
