@@ -17,7 +17,7 @@ public static class ErrorResourceManager
     /// <param name="resourceManager">The ResourceManager to register.</param>
     public static void RegisterResourceManager(ResourceManager resourceManager)
     {
-        ResourceManagers.Add(resourceManager);
+        ResourceManagers.Insert(0, resourceManager);
     }
 
     /// <summary>
